@@ -1,9 +1,9 @@
 import sys
 import pygame
 import numpy as np
-from indices import arrangement
+from Indices import arrangement
 from pygame.locals import *
-import indications
+import Indications 
 
 # CONSTANTS
 screensize = width, height = 1000, 800
@@ -20,10 +20,7 @@ blue = (0, 0, 255)
 cellMAP = np.random.randint(2, size=(10, 10))
 # [[1 0 0 1 0 0]
 #  [1 1 0 1 0 1]
-#  [1 1 1 0 0 0]
-#  [1 0 0 1 0 0]
-#  [1 1 1 1 1 0]
-#  [0 0 1 1 1 0]]
+#  [1 1 1 0 0 0], ...]
 
 #create list to hold data rows and columns
 col_list = []
@@ -51,8 +48,7 @@ def main():
         drawSquareGrid(
             VARS['grid_Origin'], VARS['gridWH'], VARS['gridCells'])
         placeCells()
-        indications.put_row_nums(row_list)
-        indications.put_col_nums(col_list)
+        Indications.renderIndications(row_list, col_list)
         pygame.display.update()
 
 
@@ -111,7 +107,7 @@ def drawSquareCell(x, y, x_dim, y_dim):
         color,
         (x, y, x_dim, y_dim))
 
-print(cellMAP.shape[0])
+# print(cellMAP.shape[0])
 # print(cellMAP.shape[1])
 
 #putting cells on board
@@ -135,14 +131,12 @@ def placeCells():
 
 
 def checkEvents():
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == KEYDOWN and event.key == K_q:
             pygame.quit()
             sys.exit()
-
 
 if __name__ == '__main__':
     main()
