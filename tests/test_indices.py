@@ -1,5 +1,5 @@
 import pytest
-from Indices import arrangement
+from indices import arrangement
 
 TEST_BOARD = [
     [0, 1, 0, 1, 1],
